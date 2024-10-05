@@ -3,7 +3,7 @@ from ydata_profiling import ProfileReport
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer, KNNImputer
-from sklearn.preprocessing import StandardScaler,OrdinalEncoder, OneHotEncoder
+from sklearn.preprocessing import StandardScaler, OrdinalEncoder, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from lazypredict.Supervised import LazyRegressor
 from sklearn.svm import LinearSVR
