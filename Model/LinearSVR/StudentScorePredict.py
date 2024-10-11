@@ -13,10 +13,10 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 df = pd.read_csv("/Data/StudentScore.xls")
 
 # First I will create a file that contains all the information about the data.
+
+# in this file i can see correlation coefficient between features is really hight
 # Profile = ProfileReport(df, title = "Student_report")
 # Profile.to_file("StudentReport.html")
-# in this file i can see correlation coefficient between features is really hight
-
 # now i want to see correlation coefficient in the data between features
 # print(df[["math score", "reading score", "writing score"]].corr())
 # as i said before the correlation coefficient is quite high so i will lean towards using Regressor
