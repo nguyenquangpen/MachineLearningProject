@@ -13,3 +13,12 @@ Some library i use :
     ColumnTransformer,
     LazyRegressor
 
+Data Source : 
+
+    Kaggle,
+    UCI Machine Learning Repository,
+    sklearn.datasets
+
+Data set:
+
+I, Titanic
