@@ -68,12 +68,8 @@ preprocess = ColumnTransformer(transformers=[
 # Fit transform trên tập train
 x_train_processed = preprocess.fit_transform(x)
 
-# Áp dụng PCA cho tập train
-pca = PCA(n_components=0.95)
-x_train_pca = pca.fit_transform(x_train_processed)
-
 # Chia dữ liệu thành tập train và test
-x_train, x_test, y_train, y_test = train_test_split(x_train_pca, y, test_size=0.2, random_state=0)
+x_train, x_test, y_train, y_test = train_test_split(x_train_processed, y, test_size=0.2, random_state=0)
 
 # chọn mô hình tốt nhất
 # rgs = LazyRegressor(verbose=0, ignore_warnings=True, custom_metric=None)
@@ -113,20 +109,19 @@ test_df = test_df.drop('Id', axis=1)
 # Sử dụng preprocess đã fit trên train để transform test
 x_test_processed = preprocess.transform(test_df)
 
-# Áp dụng PCA đã fit trên train cho test
-x_test_pca = pca.transform(x_test_processed)
-print("Số lượng thành phần chính sau PCA (test): ", x_test_pca.shape[1])
-
 # Dự đoán trên tập test
-pred = model.predict(x_test_pca)
+pred = model.predict(x_test_processed)
+print('r_score: ', r2_score(y_test, Y_pred))
+print('MSE: ', mean_squared_error(y_test, Y_pred))
+print('MAE: ', mean_absolute_error(y_test, Y_pred))
 
 # Xuất kết quả ra file CSV
 final_output = pd.DataFrame({'Id': test_ids, 'SalePrice': pred})
-final_output.to_csv('prediction.csv', index=False)
+final_output.to_csv('prediction1.csv', index=False)
 
 
-# R2:  0.8829342670176709
-# MSE:  586819340.1266665
-# MAE:  15816.301691451252
+# R2:  0.9000280607101968
+# MSE:  501132705.1109051
+# MAE:  15016.543588829576
 
 # -> kaggle score: 0.13650
